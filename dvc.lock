@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  prepare_cuda:
+    cmd:
+    - sudo rm -r /usr/lib/wsl/lib/libcuda.so.1
+    - sudo rm -r /usr/lib/wsl/lib/libcuda.so
+    - sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so.1
+    - sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so
+    - sudo ldconfig
+    - export CUDA_VISIBLE_DEVICES=0
+  preparing_cuda:
+    cmd:
+    - sudo rm -r /usr/lib/wsl/lib/libcuda.so.1
+    - sudo rm -r /usr/lib/wsl/lib/libcuda.so
+    - sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so.1
+    - sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so
+    - sudo ldconfig
+    - export CUDA_VISIBLE_DEVICES=0

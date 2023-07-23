@@ -1,0 +1,18 @@
+stages:
+  preparing_cuda:
+    cmd: 
+      - sudo rm -r /usr/lib/wsl/lib/libcuda.so.1
+      - sudo rm -r /usr/lib/wsl/lib/libcuda.so
+      - sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so.1
+      - sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so
+      - sudo ldconfig
+      - export CUDA_VISIBLE_DEVICES=0
+    always_changed: false
+  testing:
+    cmd: pytest ./tests
+    deps:
+      - tests/test_model.py
+      - tests/test_pipeline.py
+      - modeling/diffusion.py
+      - modeling/training.py
+      - modeling/unet.py
